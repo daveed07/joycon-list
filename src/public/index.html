@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Form</h1>
+    <table id="excelDataTable"></table>
+    <input id="name" type="text" placeholder="name" />
+    <input id="phone" type="number" placeholder="phone" />
+    <select name="options" id="select">
+      <option value="izquierdo">Izquierdo</option>
+      <option value="derecho">Derecho</option>
+      <option value="ambos">Ambos</option>
+    </select>
+    <input id="color" type="text" placeholder="color" />
+    <input id="submit" type="submit" value="submit" onclick="postOnClick()" />
+    <input id="refresh" type="submit" value="refresh" onclick="getOnClick()" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./index.js"></script>
+    <script src="./tableRender.js"></script>
+  </body>
+</html>

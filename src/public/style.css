@@ -1,0 +1,12 @@
+table {
+  margin-bottom: 20px;
+}
+th, td, table {
+  border: 1px solid black;
+}
+th, td {
+  padding: 2px 20px;
+}
+th {
+  font-weight: bold;
+}
