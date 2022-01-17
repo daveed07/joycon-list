@@ -1,1 +1,3 @@
-{"users":[{"date":"01/07/2022 12:12 PM","id":1,"name":"David","phone":"66","select":"izquierdo","color":"gris"},{"date":"01/07/2022 12:12 PM","id":2,"name":"Jose","phone":"88","select":"izquierdo","color":"rojo"}]}
+{
+  "users": []
+}

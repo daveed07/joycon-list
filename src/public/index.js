@@ -22,12 +22,16 @@ const postOnClick = () => {
   });
 };
 
-$.ajax({
-  url: "http://localhost:8080/api",
-  dataType: "json",
-  type: "GET",
-  success: (res) => {
-    let arr = res.users;
-    buildHtmlTable(arr);
-  },
-});
+const getOnClick = () => {
+  $.ajax({
+    url: "http://localhost:8080/api/users",
+    dataType: "json",
+    type: "GET",
+    success: (res) => {
+      let arr = res.users;
+      CreateTableFromJSON(arr);
+    },
+  });
+};
+
+getOnClick();
