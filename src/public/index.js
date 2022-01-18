@@ -5,6 +5,8 @@ const colorInput = document.getElementById("color");
 const submit = document.getElementById("submit");
 const searchInput = document.getElementById("search-input");
 const searchSubmit = document.getElementById("search-submit");
+const removeInput = document.getElementById("remove-input");
+const removeSubmit = document.getElementById("remove-submit");
 
 const postOnClick = () => {
   const name = nameInput.value;
@@ -47,7 +49,25 @@ const getOnClick = (url) => {
   });
 };
 
+const deleteOnClick = (url) => {
+  $.ajax({
+    url: url,
+    type: "DELETE",
+    success: (res) => {
+      console.log("Element successfully removed");
+    },
+    error: (jqXHR, textStatus, err) => {
+      alert(`text status ${textStatus} err ${err}`);
+    },
+  });
+  setTimeout(() => {
+    getOnClick("http://localhost:8080/api/users");
+  }, 500);
+};
+
 getOnClick("http://localhost:8080/api/users");
 submit.onclick = () => postOnClick();
 searchSubmit.onclick = () =>
   getOnClick(`http://localhost:8080/api/users/${searchInput.value}`);
+removeSubmit.onclick = () =>
+  deleteOnClick(`http://localhost:8080/api/users/${removeInput.value}`);

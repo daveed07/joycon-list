@@ -1,4 +1,5 @@
 const writeData = require("./fileWriter.js");
+const deleteData = require("./fileDelete.js");
 const json = require("./log.json");
 const path = require("path");
 const express = require("express");
@@ -18,7 +19,7 @@ app.post("/send", (req, res) => {
   const date = `${moment().subtract(10, "days").calendar()} ${moment().format(
     "LT"
   )}`;
-  const id = json.users.length + 1
+  const id = json.users[json.users.length - 1].id + 1;
   const info = {
     date: date,
     id: id,
@@ -62,6 +63,12 @@ app.get("/api/users/:ident", (req, res) => {
     }
     res.send({ users: responseArr });
   }
+});
+
+app.delete("/api/users/:id", (req, res) => {
+  const { id } = req.params;
+  deleteData(id);
+  res.send("DELETE Request called");
 });
 
 app.listen(port, () => {
