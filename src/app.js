@@ -18,24 +18,16 @@ app.post("/send", (req, res) => {
   const date = `${moment().subtract(10, "days").calendar()} ${moment().format(
     "LT"
   )}`;
-  fs.readFile("./src/log.json", "utf-8", (err, data) => {
-    if (err) throw err;
-    let arr = JSON.parse(data);
-    let id = arr.users.length + 1;
-    const info = {
-      date: date,
-      id: idGen(id),
-      name: body.name,
-      phone: body.phone,
-      select: body.select,
-      color: body.color,
-    };
-    writeData(info);
-  });
-
-  const idGen = (id) => {
-    return id;
+  const id = json.users.length + 1
+  const info = {
+    date: date,
+    id: id,
+    name: body.name,
+    phone: body.phone,
+    select: body.select,
+    color: body.color,
   };
+  writeData(info);
   res.json({ message: "I got the data" });
 });
 
