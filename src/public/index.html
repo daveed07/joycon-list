@@ -9,17 +9,22 @@
   </head>
   <body>
     <h1>Form</h1>
+    <div class="container">
+      <input id="name" type="text" placeholder="name" />
+      <input id="phone" type="number" placeholder="phone" />
+      <select name="options" id="select">
+        <option value="izquierdo">Izquierdo</option>
+        <option value="derecho">Derecho</option>
+        <option value="ambos">Ambos</option>
+      </select>
+      <input id="color" type="text" placeholder="color" />
+      <input id="submit" type="submit" value="submit" />
+    </div>
+    <div class="container">
+      <input id="search-input" type="search" placeholder="type to search" />
+      <input id="search-submit" type="submit" value="search" />
+    </div>
     <p id="showData"></p>
-    <input id="name" type="text" placeholder="name" />
-    <input id="phone" type="number" placeholder="phone" />
-    <select name="options" id="select">
-      <option value="izquierdo">Izquierdo</option>
-      <option value="derecho">Derecho</option>
-      <option value="ambos">Ambos</option>
-    </select>
-    <input id="color" type="text" placeholder="color" />
-    <input id="submit" type="submit" value="submit" onclick="postOnClick()" />
-    <input id="refresh" type="submit" value="refresh" onclick="getOnClick()" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./index.js"></script>
     <script src="./tableRender.js"></script>

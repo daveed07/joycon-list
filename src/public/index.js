@@ -2,7 +2,9 @@ const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const selectInput = document.getElementById("select");
 const colorInput = document.getElementById("color");
-const container = document.getElementById("excelDataTable");
+const submit = document.getElementById("submit");
+const searchInput = document.getElementById("search-input");
+const searchSubmit = document.getElementById("search-submit");
 
 const postOnClick = () => {
   const name = nameInput.value;
@@ -20,18 +22,32 @@ const postOnClick = () => {
       alert(`text status ${textStatus} err ${err}`);
     },
   });
+  setTimeout(() => {
+    getOnClick('http://localhost:8080/api/users')
+  }, 500);
 };
 
-const getOnClick = () => {
+const getOnClick = (url) => {
   $.ajax({
-    url: "http://localhost:8080/api/users",
+    url: url,
     dataType: "json",
     type: "GET",
     success: (res) => {
-      let arr = res.users;
-      CreateTableFromJSON(arr);
+      if (!res.users) {
+        let arr = [res];
+        CreateTableFromJSON(arr);
+      } else {
+        let arr = res.users;
+        CreateTableFromJSON(arr);
+      }
+    },
+    error: (jqXHR, textStatus, err) => {
+      alert("Cannot find register");
     },
   });
 };
 
-getOnClick();
+getOnClick("http://localhost:8080/api/users");
+submit.onclick = () => postOnClick();
+searchSubmit.onclick = () =>
+  getOnClick(`http://localhost:8080/api/users/${searchInput.value}`);
