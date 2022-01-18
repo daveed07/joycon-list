@@ -43,12 +43,32 @@ app.get("/api/users", (req, res) => {
   res.send(json);
 });
 
-app.get("/api/users/:id", (req, res) => {
-  const { id } = req.params;
-  if (id > json.users.length || id <= 0) {
-    res.status(404).json({ error: '404', message: "Not found" });
+app.get("/api/users/:ident", (req, res) => {
+  const { ident } = req.params;
+  if (/\d/.test(ident)) {
+    if (ident.toString().match(/\d/g).length < 6) {
+      if (ident > json.users.length || ident <= 0) {
+        res.status(404).json({ error: "404", message: "Not found" });
+      } else {
+        res.send(json.users[ident - 1]);
+      }
+    } else if (ident.toString().match(/\d/g).length >= 6) {
+      let responseArr = [];
+      for (let i = 0; i < json.users.length; i++) {
+        if (json.users[i].phone == ident) {
+          responseArr.push(json.users[i]);
+        }
+      }
+      res.send({ users: responseArr });
+    }
   } else {
-    res.send(json.users[id - 1])
+    let responseArr = [];
+    for (let i = 0; i < json.users.length; i++) {
+      if (json.users[i].name == ident) {
+        responseArr.push(json.users[i]);
+      }
+    }
+    res.send({ users: responseArr });
   }
 });
 

@@ -23,7 +23,7 @@ const postOnClick = () => {
     },
   });
   setTimeout(() => {
-    getOnClick('http://localhost:8080/api/users')
+    getOnClick("http://localhost:8080/api/users");
   }, 500);
 };
 
