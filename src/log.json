@@ -1,1 +1,31 @@
-{"users":[{"date":"01/07/2022 4:42 PM","id":1,"name":"David","phone":"88","select":"izquierdo","color":"grsi"},{"date":"01/08/2022 6:10 PM","id":2,"name":"Jaret","phone":"69815275","select":"derecho","color":"amarillo"}]}
+{
+  "users": [
+    {
+      "date": "01/09/2022 6:10 PM",
+      "id": 1,
+      "name": "David Zuniga",
+      "phone": "66731685",
+      "side": "izquierdo",
+      "color": "rojo",
+      "state": "pendiente"
+    },
+    {
+      "date": "01/09/2022 6:10 PM",
+      "id": 2,
+      "name": "Jaret Zuniga",
+      "phone": "6673817",
+      "side": "izquierdo",
+      "color": "azul",
+      "state": "pendiente"
+    },
+    {
+      "date": "01/09/2022 6:13 PM",
+      "id": 3,
+      "name": "Carlos Zuniga",
+      "phone": "66748034",
+      "side": "ambos",
+      "color": "gris",
+      "state": "pendiente"
+    }
+  ]
+}
