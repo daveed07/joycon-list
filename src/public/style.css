@@ -1,3 +1,6 @@
+.container {
+  margin-top: 20px;
+}
 table {
   margin-bottom: 20px;
 }
@@ -9,7 +12,4 @@ th, td {
 }
 th {
   font-weight: bold;
-}
-.container {
-  margin-top: 20px;
 }

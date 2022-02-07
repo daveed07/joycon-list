@@ -16,6 +16,7 @@ const colorEdit = document.getElementById("color-edit");
 const selectStateEdit = document.getElementById("select-state-edit");
 const editSubmit = document.getElementById("submit-edit");
 
+
 const postOnClick = () => {
   const name = nameInput.value;
   const phone = phoneInput.value;
@@ -116,3 +117,10 @@ removeSubmit.onclick = () =>
   deleteOnClick(`http://localhost:8080/api/users/${removeInput.value}`);
 
 editSubmit.onclick = () => patchOnClick(`http://localhost:8080/api/users/${idToEditInput.value}`)
+
+
+searchInput.addEventListener('change', () => {
+  if (searchInput.value === "") {
+    getOnClick("http://localhost:8080/api/users");
+  }
+})

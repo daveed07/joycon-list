@@ -37,6 +37,22 @@ app.post("/send", (req, res) => {
   res.json({ message: "I got the data" });
 });
 
+// app.get("/api/users", (req, res) => {
+//   let page = parseInt(req.query.page);
+//   const pageCount = Math.ceil(json.users.length / 10);
+//   if (!page) {
+//     page = 1;
+//   }
+//   if (page > pageCount) {
+//     page = pageCount;
+//   }
+//   res.json({
+//     page: page,
+//     pageCount: pageCount,
+//     users: json.users.slice(page * 10 - 10, page * 20),
+//   });
+// });
+
 app.get("/api/users", (req, res) => {
   res.send(json);
 });
@@ -57,7 +73,7 @@ app.get("/api/users/:ident", (req, res) => {
           responseArr.push(json.users[i]);
         }
       }
-      res.send({ users:responseArr });
+      res.send({ users: responseArr });
     }
   } else {
     let responseArr = [];
@@ -66,7 +82,7 @@ app.get("/api/users/:ident", (req, res) => {
         responseArr.push(json.users[i]);
       }
     }
-    res.send({ users:responseArr });
+    res.send({ users: responseArr });
   }
 });
 
@@ -76,7 +92,7 @@ app.delete("/api/users/:id", (req, res) => {
     return res.status(404).json({ error: "404", message: "Not found" });
   }
   deleteData(id);
-   return res.send("DELETE Request called");
+  return res.send("DELETE Request called");
 });
 
 app.patch("/api/users/:ident", (req, res) => {

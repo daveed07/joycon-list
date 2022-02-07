@@ -8,17 +8,17 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Joycon List</h1>
+    <h1>Lista de Joycons</h1>
     <div class="container">
-      <h2>Add</h2>
-      <input id="name" type="text" placeholder="name" />
-      <input id="phone" type="number" placeholder="phone" />
+      <h2>Agregar</h2>
+      <input id="name" type="text" placeholder="Nombre" />
+      <input id="phone" type="number" placeholder="Telefono" />
       <select name="sides" id="select-side">
         <option value="izquierdo">Izquierdo</option>
         <option value="derecho">Derecho</option>
         <option value="ambos">Ambos</option>
       </select>
-      <input id="color" type="text" placeholder="color" />
+      <input id="color" type="text" placeholder="Color" />
       <select name="states" id="select-state">
         <option value="pendiente">Pendiente</option>
         <option value="entregado">Entregado</option>
@@ -26,16 +26,17 @@
       <input id="submit" type="submit" value="submit" />
     </div>
     <div class="container">
-      <h2>Edit</h2>
-      <input id="edit-input" type="text" placeholder="id to edit" />
-      <input id="name-edit" type="text" placeholder="name" />
-      <input id="phone-edit" type="number" placeholder="phone" />
+      <h2>Editar</h2>
+      <input id="edit-input" type="text" placeholder="Id" />
+      <input id="name-edit" type="text" placeholder="Nombre" />
+      <input id="phone-edit" type="number" placeholder="Telefono" />
       <select name="sides-edit" id="select-side-edit">
+        <option value="">Select</option>
         <option value="izquierdo">Izquierdo</option>
         <option value="derecho">Derecho</option>
         <option value="ambos">Ambos</option>
       </select>
-      <input id="color-edit" type="text" placeholder="color" />
+      <input id="color-edit" type="text" placeholder="Color" />
       <select name="states-edit" id="select-state-edit">
         <option value="pendiente">Pendiente</option>
         <option value="entregado">Entregado</option>
@@ -43,13 +44,13 @@
       <input id="submit-edit" type="submit" value="edit" />
     </div>
     <div class="container">
-      <h2>Remove</h2>
-      <input id="remove-input" type="text" placeholder="id to remove" />
-      <input id="remove-submit" type="submit" value="remove" />
+      <h2>Eliminar</h2>
+      <input id="remove-input" type="text" placeholder="Id" />
+      <input id="remove-submit" type="submit" />
     </div>
     <div class="container">
-      <h2>Search</h2>
-      <input id="search-input" type="search" placeholder="type to search" />
+      <h2>Buscar</h2>
+      <input id="search-input" type="search" />
       <input id="search-submit" type="submit" value="search" />
     </div>
     <p id="showData"></p>
