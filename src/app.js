@@ -61,11 +61,18 @@ app.get("/api/users/:ident", (req, res) => {
   const { ident } = req.params;
   if (/\d/.test(ident)) {
     if (ident.toString().match(/\d/g).length < 6) {
-      if (ident > json.users.length || ident <= 0) {
-        res.status(404).json({ error: "404", message: "Not found" });
-      } else {
-        res.send(json.users[ident - 1]);
+      // if (ident > json.users.length || ident <= 0) {
+      //   res.status(404).json({ error: "404", message: "Not found" });
+      // } else {
+      //   res.send(json.users[ident - 1]);
+      // }
+      let responseArr = [];
+      for (let i = 0; i < json.users.length; i++) {
+        if (json.users[i].id == ident) {
+          responseArr.push(json.users[i]);
+        }
       }
+      res.send({ users: responseArr });
     } else if (ident.toString().match(/\d/g).length >= 6) {
       let responseArr = [];
       for (let i = 0; i < json.users.length; i++) {
@@ -86,12 +93,18 @@ app.get("/api/users/:ident", (req, res) => {
   }
 });
 
-app.delete("/api/users/:id", (req, res) => {
-  const { id } = req.params;
-  if (!json.users[id - 1]) {
-    return res.status(404).json({ error: "404", message: "Not found" });
+app.delete("/api/users/:ident", (req, res) => {
+  const { ident } = req.params;
+  // if (!json.users[ident - 1]) {
+  //   return res.status(404).json({ error: "404", message: "Not found" });
+  // }
+  // deleteData(ident);
+  // return res.send("DELETE Request called");
+  for (let i = 0; i < json.users.length; i++) {
+    if (json.users[i].id == ident) {
+      deleteData(ident);
+    }
   }
-  deleteData(id);
   return res.send("DELETE Request called");
 });
 
