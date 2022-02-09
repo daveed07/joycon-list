@@ -1,7 +1,8 @@
 const writeData = require("./fileWriter.js");
 const deleteData = require("./fileDelete.js");
 const patchData = require("./filePatch.js");
-const json = require("./log.json");
+const readData = require("./fileGet.js");
+// const json = require("./log.json");
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/send", (req, res) => {
+  let json = readData();
   const body = req.body;
   const date = `${moment().subtract(10, "days").calendar()} ${moment().format(
     "LT"
@@ -54,10 +56,12 @@ app.post("/send", (req, res) => {
 // });
 
 app.get("/api/users", (req, res) => {
+  let json = readData();
   res.send(json);
 });
 
 app.get("/api/users/:ident", (req, res) => {
+  let json = readData();
   const { ident } = req.params;
   if (/\d/.test(ident)) {
     if (ident.toString().match(/\d/g).length < 6) {
@@ -94,6 +98,7 @@ app.get("/api/users/:ident", (req, res) => {
 });
 
 app.delete("/api/users/:ident", (req, res) => {
+  let json = readData();
   const { ident } = req.params;
   // if (!json.users[ident - 1]) {
   //   return res.status(404).json({ error: "404", message: "Not found" });
@@ -109,6 +114,7 @@ app.delete("/api/users/:ident", (req, res) => {
 });
 
 app.patch("/api/users/:ident", (req, res) => {
+  let json = readData();
   const { ident } = req.params;
   const body = req.body;
   for (let i = 0; i < json.users.length; i++) {

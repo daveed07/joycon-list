@@ -16,6 +16,8 @@ const colorEdit = document.getElementById("color-edit");
 const selectStateEdit = document.getElementById("select-state-edit");
 const editSubmit = document.getElementById("submit-edit");
 
+const IP = '192.168.1.138';
+
 
 const postOnClick = () => {
   const name = nameInput.value;
@@ -41,7 +43,7 @@ const postOnClick = () => {
     },
   });
   setTimeout(() => {
-    getOnClick("http://localhost:8080/api/users");
+    getOnClick(`http://${IP}:8080/api/users`);
   }, 500);
 };
 
@@ -77,7 +79,7 @@ const deleteOnClick = (url) => {
     },
   });
   setTimeout(() => {
-    getOnClick("http://localhost:8080/api/users");
+    getOnClick(`http://${IP}:8080/api/users`);
   }, 500);
 };
 
@@ -105,22 +107,22 @@ const patchOnClick = (url) => {
     },
   });
   setTimeout(() => {
-    getOnClick("http://localhost:8080/api/users");
+    getOnClick(`http://${IP}:8080/api/users`);
   }, 500);
 };
 
-getOnClick("http://localhost:8080/api/users");
+getOnClick(`http://${IP}:8080/api/users`);
 submit.onclick = () => postOnClick();
 searchSubmit.onclick = () =>
-  getOnClick(`http://localhost:8080/api/users/${searchInput.value}`);
+  getOnClick(`http://${IP}:8080/api/users/${searchInput.value}`);
 removeSubmit.onclick = () =>
-  deleteOnClick(`http://localhost:8080/api/users/${removeInput.value}`);
+  deleteOnClick(`http://${IP}:8080/api/users/${removeInput.value}`);
 
-editSubmit.onclick = () => patchOnClick(`http://localhost:8080/api/users/${idToEditInput.value}`)
+editSubmit.onclick = () => patchOnClick(`http://${IP}:8080/api/users/${idToEditInput.value}`)
 
 
 searchInput.addEventListener('change', () => {
   if (searchInput.value === "") {
-    getOnClick("http://localhost:8080/api/users");
+    getOnClick(`http://${IP}:8080/api/users`);
   }
 })
