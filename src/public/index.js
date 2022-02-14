@@ -1,6 +1,8 @@
 const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const selectSideInput = document.getElementById("select-side");
+const rightSeriesInput = document.getElementById("right-series");
+const leftSeriesInput = document.getElementById("left-series");
 const colorInput = document.getElementById("color");
 const selectStateInput = document.getElementById("select-state");
 const submit = document.getElementById("submit");
@@ -12,17 +14,22 @@ const idToEditInput = document.getElementById("edit-input");
 const nameEdit = document.getElementById("name-edit");
 const phoneEdit = document.getElementById("phone-edit");
 const selectSideEdit = document.getElementById("select-side-edit");
+const rightSeriesEdit = document.getElementById("right-series-edit");
+const leftSeriesEdit = document.getElementById("left-series-edit");
 const colorEdit = document.getElementById("color-edit");
 const selectStateEdit = document.getElementById("select-state-edit");
 const editSubmit = document.getElementById("submit-edit");
 
-const IP = '192.168.1.138';
+const IP = 'localhost';
+// const IP = '192.168.1.138';
 
 
 const postOnClick = () => {
   const name = nameInput.value;
   const phone = phoneInput.value;
   const selectSide = selectSideInput.value;
+  const rightSeries = rightSeriesInput.value;
+  const leftSeries = leftSeriesInput.value;
   const color = colorInput.value;
   const selectState = selectStateInput.value;
   $.ajax({
@@ -32,6 +39,8 @@ const postOnClick = () => {
       name: name,
       phone: phone,
       side: selectSide,
+      right: rightSeries,
+      left: leftSeries,
       color: color,
       state: selectState,
     },
@@ -87,6 +96,8 @@ const patchOnClick = (url) => {
   const name = nameEdit.value;
   const phone = phoneEdit.value;
   const selectSide = selectSideEdit.value;
+  const rightSeries = rightSeriesEdit.value;
+  const leftSeries = leftSeriesEdit.value;
   const color = colorEdit.value;
   const selectState = selectStateEdit.value;
   $.ajax({
@@ -96,6 +107,8 @@ const patchOnClick = (url) => {
       name: name,
       phone: phone,
       side: selectSide,
+      right: rightSeries,
+      left: leftSeries,
       color: color,
       state: selectState,
     },

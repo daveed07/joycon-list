@@ -1,7 +1,8 @@
 const fs = require("fs");
+const file = "./src/log.json";
 
 const deleteData = (id) => {
-  fs.readFile("./src/log.json", "utf-8", (err, data) => {
+  fs.readFile(file, "utf-8", (err, data) => {
     if (err) throw err;
     let arr = JSON.parse(data);
     for (let i = 0; i < arr.users.length; i++) {

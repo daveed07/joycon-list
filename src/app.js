@@ -32,6 +32,8 @@ app.post("/send", (req, res) => {
     name: body.name,
     phone: body.phone,
     side: body.side,
+    right: body.right,
+    left: body.left,
     color: body.color,
     state: body.state,
   };
@@ -122,6 +124,8 @@ app.patch("/api/users/:ident", (req, res) => {
       let name = body.name === "" ? json.users[i].name : body.name;
       let phone = body.phone === "" ? json.users[i].phone : body.phone;
       let side = body.side === "" ? json.users[i].side : body.side;
+      let right = body.right === "" ? json.users[i].right : body.right;
+      let left = body.left === "" ? json.users[i].left : body.left;
       let color = body.color === "" ? json.users[i].color : body.color;
       let state = body.state === "" ? json.users[i].state : body.state;
 
@@ -131,6 +135,8 @@ app.patch("/api/users/:ident", (req, res) => {
         name: name,
         phone: phone,
         side: side,
+        right: right,
+        left: left,
         color: color,
         state: state,
       };

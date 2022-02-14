@@ -1,4 +1,5 @@
 const fs = require("fs");
+const file = "./src/log.json";
 
 const readData = () => {
   // fs.readFile("./src/log.json", "utf-8", (err, data) => {
@@ -6,7 +7,7 @@ const readData = () => {
   //   let json = JSON.parse(data);
   //   return json;
   // });
-  const json = fs.readFileSync('./src/log.json', 'utf-8');
+  const json = fs.readFileSync(file, "utf-8");
   return JSON.parse(json);
 };
 
