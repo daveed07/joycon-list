@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const moment = require("moment");
 const fs = require("fs");
 const app = express();
+const IP = process.env.IP;
 const port = 8080;
 
 app.use(bodyParser.json());
@@ -148,5 +149,5 @@ app.patch("/api/users/:ident", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}`);
+  console.log(`Listening on http://${IP}:${port}`);
 });
