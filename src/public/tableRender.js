@@ -33,6 +33,13 @@ function CreateTableFromJSON(list) {
     for (let j = 0; j < col.length; j++) {
       var tabCell = tr.insertCell(-1);
       tabCell.innerHTML = list[i][col[j]];
+      if (tabCell.innerHTML.includes('/')) {
+        tabCell.innerHTML = tabCell.innerHTML.replace('/', '<br />')
+      } else if (tabCell.innerHTML.length > 14) {
+        if (!tabCell.innerHTML.includes(' ')) {
+          tabCell.innerHTML = tabCell.innerHTML.substring(0, tabCell.innerHTML.length / 2) + '-<br />' + tabCell.innerHTML.substring((tabCell.innerHTML.length / 2) + 1, tabCell.innerHTML.length);
+        }
+      }
     }
   }
 

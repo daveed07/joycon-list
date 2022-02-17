@@ -92,7 +92,7 @@ app.get("/api/users/:ident", (req, res) => {
   } else {
     let responseArr = [];
     for (let i = 0; i < json.users.length; i++) {
-      if (json.users[i].name == ident) {
+      if (json.users[i].name.toLowerCase().includes(ident.toLocaleLowerCase())) {
         responseArr.push(json.users[i]);
       }
     }
