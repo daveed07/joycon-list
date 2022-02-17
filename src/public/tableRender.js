@@ -20,11 +20,15 @@ function CreateTableFromJSON(list) {
     let th = document.createElement("th"); // TABLE HEADER.
     th.innerHTML = col[i];
     tr.appendChild(th);
+    tr.className = 'colorEven';
   }
 
   // ADD JSON DATA TO THE TABLE AS ROWS.
   for (let i = 0; i < list.length; i++) {
     tr = table.insertRow(-1);
+    if (i%2!==0) {
+      tr.className = 'colorEven';
+    }
 
     for (let j = 0; j < col.length; j++) {
       var tabCell = tr.insertCell(-1);

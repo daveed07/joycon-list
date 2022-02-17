@@ -21,8 +21,6 @@ const selectStateEdit = document.getElementById("select-state-edit");
 const editSubmit = document.getElementById("submit-edit");
 
 const IP = 'localhost';
-// const IP = '192.168.1.138';
-
 
 const postOnClick = () => {
   const name = nameInput.value;
