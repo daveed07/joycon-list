@@ -28,8 +28,8 @@ app.post("/send", (req, res) => {
       ? json.users.length + 1
       : json.users[json.users.length - 1].id + 1;
   const info = {
-    date: date,
     id: id,
+    date: date,
     name: body.name,
     phone: body.phone,
     side: body.side,
@@ -60,7 +60,46 @@ app.post("/send", (req, res) => {
 
 app.get("/api/users", (req, res) => {
   let json = readData();
-  res.send(json);
+  const color = req.query.color;
+  const state = req.query.state;
+  const side = req.query.side;
+  const sortByDate = req.query.sortByDate;
+
+  if (color !== undefined) {
+    let responseArr = [];
+    for (let i = 0; i < json.users.length; i++) {
+      if (json.users[i].color.toLowerCase().includes(color.toLowerCase())) {
+        responseArr.push(json.users[i]);
+      }
+    }
+    return res.send({ users: responseArr });
+  } else if (state !== undefined) {
+    let responseArr = [];
+    for (let i = 0; i < json.users.length; i++) {
+      if (json.users[i].state == state) {
+        responseArr.push(json.users[i]);
+      }
+    }
+    return res.send({ users: responseArr });
+  } else if (side !== undefined) {
+    let responseArr = [];
+    for (let i = 0; i < json.users.length; i++) {
+      if (json.users[i].side == side) {
+        responseArr.push(json.users[i]);
+      }
+    }
+    return res.send({ users: responseArr });
+  } else if (sortByDate !== undefined) {
+    if (sortByDate == 'asc') {
+      json.users.sort((a, b) => (Number(new Date(a.date)) > Number(new Date(b.date))) ? 1 : -1);
+      return res.send(json);
+    } else if (sortByDate == 'desc') {
+      json.users.sort((a, b) => (Number(new Date(b.date)) > Number(new Date(a.date))) ? -1 : 1);
+      return res.send(json);
+    }
+  } else if (Object.keys(req.query).length === 0) {
+    return res.send(json);
+  }
 });
 
 app.get("/api/users/:ident", (req, res) => {
@@ -92,7 +131,9 @@ app.get("/api/users/:ident", (req, res) => {
   } else {
     let responseArr = [];
     for (let i = 0; i < json.users.length; i++) {
-      if (json.users[i].name.toLowerCase().includes(ident.toLocaleLowerCase())) {
+      if (
+        json.users[i].name.toLowerCase().includes(ident.toLocaleLowerCase())
+      ) {
         responseArr.push(json.users[i]);
       }
     }
@@ -131,8 +172,8 @@ app.patch("/api/users/:ident", (req, res) => {
       let state = body.state === "" ? json.users[i].state : body.state;
 
       const info = {
-        date: json.users[i].date,
         id: ident,
+        date: json.users[i].date,
         name: name,
         phone: phone,
         side: side,

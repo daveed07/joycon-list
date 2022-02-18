@@ -77,6 +77,27 @@
         </div>
       </div>
     </div>
+    <div class="query-section">
+      <div class="filter-section">
+        <select name="filter-type-select" id="filter-type-select">
+          <option value="color">Color</option>
+          <option value="state">Estado</option>
+          <option value="sides">Lado</option>
+        </select>
+        <input id="filter-select" type="text" placeholder="Opcion">
+        <input id="filter-submit" class="submit" type="submit" value="Filtrar">
+      </div>
+      <div class="sort-section">
+        <select name="sort-type-select" id="sort-type-select">
+          <option value="sortByDate">Fecha</option>
+        </select>
+        <select name="sort-select" id="sort-select">
+          <option value="asc">Asc</option>
+          <option value="desc">Desc</option>
+        </select>
+        <input id="sort-submit" class="submit" type="submit" value="Ordenar">
+      </div>
+    </div>
     <p id="showData"></p>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./index.js"></script>

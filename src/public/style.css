@@ -4,12 +4,17 @@
   align-items: center;
   margin-top: 20px;
 }
-.input-container {
+.query-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.input-container, .filter-section, .sort-section {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.input-container input {
+.input-container input, .query-section input {
   width: 10%;
   height: 20px;
   margin: 5px;
@@ -22,10 +27,13 @@
   transition: ease-in-out border .15s;
   transition: ease-in-out box-shadow .15s;
 }
-.input-container input:focus:not(.submit) {
+.input-container input:focus:not(.submit), .query-section input:focus:not(.submit) {
   border: 1px solid #86b7fe;
   box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
   outline: none;
+}
+.query-section input {
+  max-width: 112px;
 }
 .input-container input::placeholder {
   font-size: 0.85rem;
@@ -38,7 +46,7 @@
 .input-container #search-input {
   width: 50%;
 }
-.input-container .submit {
+.input-container .submit, .query-section .submit {
   width: max-content;
   height: auto;
   padding: 12px;
@@ -50,7 +58,7 @@
   transition: ease-in-out background .15s;
   outline: none;
 }
-.input-container .submit:hover, .input-container .submit:focus{
+.input-container .submit:hover, .input-container .submit:focus, .query-section .submit:hover, .query-section .submit:focus{
   background: #198754;
   color:  white;
 }
@@ -97,7 +105,7 @@ select:focus {
 }
 table {
   max-width: 1700px;
-  margin: 40px auto 20px;
+  margin: 10px auto 20px;
   border-collapse: collapse;
   padding: 0;
 }

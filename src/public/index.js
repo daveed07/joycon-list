@@ -19,8 +19,14 @@ const leftSeriesEdit = document.getElementById("left-series-edit");
 const colorEdit = document.getElementById("color-edit");
 const selectStateEdit = document.getElementById("select-state-edit");
 const editSubmit = document.getElementById("submit-edit");
+const filterTypeSelect = document.getElementById("filter-type-select");
+const filterSelectInput = document.getElementById("filter-select");
+const filterSubmit = document.getElementById("filter-submit");
+const sortTypeSelect = document.getElementById("sort-type-select");
+const sortSelect = document.getElementById("sort-select");
+const sortSubmit = document.getElementById("sort-submit");
 
-const IP = 'localhost';
+const IP = "localhost";
 
 const postOnClick = () => {
   const name = nameInput.value;
@@ -129,11 +135,23 @@ searchSubmit.onclick = () =>
 removeSubmit.onclick = () =>
   deleteOnClick(`http://${IP}:8080/api/users/${removeInput.value}`);
 
-editSubmit.onclick = () => patchOnClick(`http://${IP}:8080/api/users/${idToEditInput.value}`)
+editSubmit.onclick = () =>
+  patchOnClick(`http://${IP}:8080/api/users/${idToEditInput.value}`);
 
-
-searchInput.addEventListener('change', () => {
+searchInput.addEventListener("change", () => {
   if (searchInput.value === "") {
     getOnClick(`http://${IP}:8080/api/users`);
   }
-})
+});
+
+filterSubmit.onclick = () => {
+  getOnClick(
+    `http://${IP}:8080/api/users?${filterTypeSelect.value}=${filterSelectInput.value}`
+  );
+};
+
+sortSubmit.onclick = () => {
+  getOnClick(
+    `http://${IP}:8080/api/users?${sortTypeSelect.value}=${sortSelect.value}`
+  );
+}
