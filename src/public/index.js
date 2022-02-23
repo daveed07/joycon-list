@@ -38,7 +38,7 @@ const postOnClick = () => {
   const selectState = selectStateInput.value;
   $.ajax({
     type: "POST",
-    url: "/send",
+    url: "/post",
     data: {
       name: name,
       phone: phone,
@@ -72,6 +72,7 @@ const getOnClick = (url) => {
       } else {
         let arr = res.users;
         CreateTableFromJSON(arr);
+        addColumn();
       }
     },
     error: (jqXHR, textStatus, err) => {
@@ -132,8 +133,6 @@ getOnClick(`http://${IP}:8080/api/users`);
 submit.onclick = () => postOnClick();
 searchSubmit.onclick = () =>
   getOnClick(`http://${IP}:8080/api/users/${searchInput.value}`);
-removeSubmit.onclick = () =>
-  deleteOnClick(`http://${IP}:8080/api/users/${removeInput.value}`);
 
 editSubmit.onclick = () =>
   patchOnClick(`http://${IP}:8080/api/users/${idToEditInput.value}`);
@@ -154,4 +153,14 @@ sortSubmit.onclick = () => {
   getOnClick(
     `http://${IP}:8080/api/users?${sortTypeSelect.value}=${sortSelect.value}`
   );
+};
+
+window.onload = () => {
+  let deleteButton = document.querySelectorAll(".delete-button");
+  deleteButton.forEach(item => {
+    item.onclick = () => {
+      let firstChildText = item.parentElement.parentElement.firstChild.innerText;
+      deleteOnClick(`http://${IP}:8080/api/users/${firstChildText}`)
+    }
+  })
 }

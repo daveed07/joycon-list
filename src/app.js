@@ -2,7 +2,6 @@ const writeData = require("./fileWriter.js");
 const deleteData = require("./fileDelete.js");
 const patchData = require("./filePatch.js");
 const readData = require("./fileGet.js");
-// const json = require("./log.json");
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -10,14 +9,14 @@ const moment = require("moment");
 const fs = require("fs");
 const app = express();
 const IP = process.env.IP;
-const port = 8080;
+const PORT = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.post("/send", (req, res) => {
+app.post("/post", (req, res) => {
   let json = readData();
   const body = req.body;
   const date = `${moment().subtract(10, "days").calendar()} ${moment().format(
@@ -189,6 +188,6 @@ app.patch("/api/users/:ident", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Listening on http://${IP}:${port}`);
+app.listen(PORT, () => {
+  console.log(`Listening on http://${IP}:${PORT}`);
 });

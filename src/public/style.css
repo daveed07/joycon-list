@@ -14,7 +14,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.input-container input, .query-section input {
+.input-container input, .query-section input, .delete-button {
   width: 10%;
   height: 20px;
   margin: 5px;
@@ -46,7 +46,7 @@
 .input-container #search-input {
   width: 50%;
 }
-.input-container .submit, .query-section .submit {
+.input-container .submit, .query-section .submit, .delete-button {
   width: max-content;
   height: auto;
   padding: 12px;
@@ -62,14 +62,14 @@
   background: #198754;
   color:  white;
 }
-#remove-submit {
+.delete-button {
   border: 1px solid #dc3545;
   color: #dc3545;
   font-weight: 500;
   transition: ease-in-out color .15s;
   transition: ease-in-out background .15s;
 }
-#remove-submit:hover, #remove-submit:focus {
+.delete-button:hover, .delete-button:focus {
   background: #dc3545;
   color: white;
 }
