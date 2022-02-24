@@ -26,7 +26,7 @@ const sortTypeSelect = document.getElementById("sort-type-select");
 const sortSelect = document.getElementById("sort-select");
 const sortSubmit = document.getElementById("sort-submit");
 
-const IP = "localhost";
+const IP = "192.168.1.138";
 
 const postOnClick = () => {
   const name = nameInput.value;

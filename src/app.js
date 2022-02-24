@@ -25,7 +25,7 @@ app.post("/post", (req, res) => {
   const id =
     json.users.length == 0
       ? json.users.length + 1
-      : json.users[json.users.length - 1].id + 1;
+      : Number(json.users[json.users.length - 1].id) + 1;
   const info = {
     id: id,
     date: date,
