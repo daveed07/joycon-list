@@ -155,12 +155,12 @@ sortSubmit.onclick = () => {
   );
 };
 
-window.onload = () => {
+window.addEventListener('load', () => {
   let deleteButton = document.querySelectorAll(".delete-button");
   deleteButton.forEach(item => {
     item.onclick = () => {
       let firstChildText = item.parentElement.parentElement.firstChild.innerText;
-      deleteOnClick(`http://${IP}:8080/api/users/${firstChildText}`)
+      deleteOnClick(`http://${IP}:8080/api/users/${firstChildText}`);
     }
   })
-}
+})
