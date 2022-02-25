@@ -64,6 +64,6 @@ function addColumn() {
   var tblBodyObj = document.getElementById("table").tBodies[0]; //table body
   for (var i = 1; i < tblBodyObj.rows.length; i++) {
     var newCell = tblBodyObj.rows[i].insertCell(-1); //create new cell
-    newCell.innerHTML = "<button class='delete-button' type='button'>Eliminar</button>" //append data to cell
+    newCell.innerHTML = "<button class='delete-button' type='button' onclick='removeRow(this)'>Eliminar</button>" //append data to cell
   }
 }

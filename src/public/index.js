@@ -1,58 +1,25 @@
-const nameInput = document.getElementById("name");
-const phoneInput = document.getElementById("phone");
-const selectSideInput = document.getElementById("select-side");
-const rightSeriesInput = document.getElementById("right-series");
-const leftSeriesInput = document.getElementById("left-series");
-const colorInput = document.getElementById("color");
-const selectStateInput = document.getElementById("select-state");
-const submit = document.getElementById("submit");
-const searchInput = document.getElementById("search-input");
-const searchSubmit = document.getElementById("search-submit");
-const removeInput = document.getElementById("remove-input");
-const removeSubmit = document.getElementById("remove-submit");
-const idToEditInput = document.getElementById("edit-input");
-const nameEdit = document.getElementById("name-edit");
-const phoneEdit = document.getElementById("phone-edit");
-const selectSideEdit = document.getElementById("select-side-edit");
-const rightSeriesEdit = document.getElementById("right-series-edit");
-const leftSeriesEdit = document.getElementById("left-series-edit");
-const colorEdit = document.getElementById("color-edit");
-const selectStateEdit = document.getElementById("select-state-edit");
-const editSubmit = document.getElementById("submit-edit");
-const filterTypeSelect = document.getElementById("filter-type-select");
-const filterSelectInput = document.getElementById("filter-select");
-const filterSubmit = document.getElementById("filter-submit");
-const sortTypeSelect = document.getElementById("sort-type-select");
-const sortSelect = document.getElementById("sort-select");
-const sortSubmit = document.getElementById("sort-submit");
-
-const IP = "192.168.1.138";
+const IP = "192.168.0.26";
 
 const postOnClick = () => {
-  const name = nameInput.value;
-  const phone = phoneInput.value;
-  const selectSide = selectSideInput.value;
-  const rightSeries = rightSeriesInput.value;
-  const leftSeries = leftSeriesInput.value;
-  const color = colorInput.value;
-  const selectState = selectStateInput.value;
   $.ajax({
     type: "POST",
     url: "/post",
     data: {
-      name: name,
-      phone: phone,
-      side: selectSide,
-      right: rightSeries,
-      left: leftSeries,
-      color: color,
-      state: selectState,
+      name: $("#name")[0].value,
+      phone: $("#phone")[0].value,
+      side: $("#select-side")[0].value,
+      right: $("#right-series")[0].value,
+      left: $("#left-series")[0].value,
+      color: $("#color")[0].value,
+      state: $("#select-state")[0].value,
     },
     success: (data) => {
-      console.log("message", data.message);
+      console.log(data.message);
+      alert("Elemento agregado");
     },
     error: (jqXHR, textStatus, err) => {
-      alert(`text status ${textStatus} err ${err}`);
+      // alert(`text status ${textStatus} err ${err}`);
+      alert("Error al enviar, por favor intentar nuevamente");
     },
   });
   setTimeout(() => {
@@ -76,7 +43,7 @@ const getOnClick = (url) => {
       }
     },
     error: (jqXHR, textStatus, err) => {
-      alert("Cannot find register");
+      alert("No se pudo encontrar el registro");
     },
   });
 };
@@ -87,9 +54,11 @@ const deleteOnClick = (url) => {
     type: "DELETE",
     success: (res) => {
       console.log("Element successfully removed");
+      alert("Elemento eliminado exitosamente");
     },
     error: (jqXHR, textStatus, err) => {
-      alert(`text status ${textStatus} err ${err}`);
+      // alert(`text status ${textStatus} err ${err}`);
+      alert("Error al eliminar, por favor intentar nuevamente");
     },
   });
   setTimeout(() => {
@@ -98,30 +67,25 @@ const deleteOnClick = (url) => {
 };
 
 const patchOnClick = (url) => {
-  const name = nameEdit.value;
-  const phone = phoneEdit.value;
-  const selectSide = selectSideEdit.value;
-  const rightSeries = rightSeriesEdit.value;
-  const leftSeries = leftSeriesEdit.value;
-  const color = colorEdit.value;
-  const selectState = selectStateEdit.value;
   $.ajax({
     url: url,
     type: "PATCH",
     data: {
-      name: name,
-      phone: phone,
-      side: selectSide,
-      right: rightSeries,
-      left: leftSeries,
-      color: color,
-      state: selectState,
+      name: $("#name-edit")[0].value,
+      phone: $("#phone-edit")[0].value,
+      side: $("#select-side-edit")[0].value,
+      right: $("#right-series-edit")[0].value,
+      left: $("#left-series-edit")[0].value,
+      color: $("#color-edit")[0].value,
+      state: $("#select-state-edit")[0].value,
     },
     success: (data) => {
-      console.log("message", data.message);
+      console.log(data.message);
+      alert("Elemento editado exitosamente");
     },
     error: (jqXHR, textStatus, err) => {
-      alert(`text status ${textStatus} err ${err}`);
+      // alert(`text status ${textStatus} err ${err}`);
+      alert("Error al editar, por favor intentar nuevamente");
     },
   });
   setTimeout(() => {
@@ -130,37 +94,32 @@ const patchOnClick = (url) => {
 };
 
 getOnClick(`http://${IP}:8080/api/users`);
-submit.onclick = () => postOnClick();
-searchSubmit.onclick = () =>
-  getOnClick(`http://${IP}:8080/api/users/${searchInput.value}`);
 
-editSubmit.onclick = () =>
-  patchOnClick(`http://${IP}:8080/api/users/${idToEditInput.value}`);
-
-searchInput.addEventListener("change", () => {
-  if (searchInput.value === "") {
-    getOnClick(`http://${IP}:8080/api/users`);
-  }
+$("#submit").click(() => {
+  postOnClick();
 });
 
-filterSubmit.onclick = () => {
-  getOnClick(
-    `http://${IP}:8080/api/users?${filterTypeSelect.value}=${filterSelectInput.value}`
-  );
-};
+$("#search-submit").click(() => {
+  getOnClick(`http://${IP}:8080/api/users/${$("#search-input")[0].value}`);
+});
 
-sortSubmit.onclick = () => {
-  getOnClick(
-    `http://${IP}:8080/api/users?${sortTypeSelect.value}=${sortSelect.value}`
-  );
-};
+$("#submit-edit").click(() => {
+  patchOnClick(`http://${IP}:8080/api/users/${$("#edit-input")[0].value}`);
+});
 
-window.addEventListener('load', () => {
-  let deleteButton = document.querySelectorAll(".delete-button");
-  deleteButton.forEach(item => {
-    item.onclick = () => {
-      let firstChildText = item.parentElement.parentElement.firstChild.innerText;
-      deleteOnClick(`http://${IP}:8080/api/users/${firstChildText}`);
-    }
-  })
+$("#filter-submit").click(() => {
+  getOnClick(
+    `http://${IP}:8080/api/users?${$("#filter-type-select")[0].value}=${$('#filter-select')[0].value}`
+  );
+});
+
+$('#sort-submit').click(() => {
+  getOnClick(
+    `http://${IP}:8080/api/users?${$("#sort-type-select")[0].value}=${$('#sort-select')[0].value}`
+  );
 })
+
+function removeRow(oButton) {
+  let idToRemove = oButton.parentNode.parentNode.firstChild.innerText;
+  deleteOnClick(`http://${IP}:8080/api/users/${idToRemove}`);
+}
