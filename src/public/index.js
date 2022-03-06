@@ -27,7 +27,7 @@ const postOnClick = () => {
   //   getOnClick(`https://${IP}:8080/api/users`);
   // }, 500);
   setTimeout(() => {
-    getOnClick(`https://${URL}/api/users/`);
+    getOnClick(`https://${URL}/api/users`);
   }, 500);
 };
 
@@ -69,7 +69,7 @@ const deleteOnClick = (url) => {
   //   getOnClick(`https://${IP}:8080/api/users`);
   // }, 500);
   setTimeout(() => {
-    getOnClick(`https://${URL}/api/users/`);
+    getOnClick(`https://${URL}/api/users`);
   }, 500);
 };
 
@@ -99,12 +99,12 @@ const patchOnClick = (url) => {
   //   getOnClick(`https://${IP}:8080/api/users`);
   // }, 500);
   setTimeout(() => {
-    getOnClick(`https://${URL}/api/users/`);
+    getOnClick(`https://${URL}/api/users`);
   }, 500);
 };
 
 // getOnClick(`https://${IP}:8080/api/users`);
-getOnClick(`https://${URL}/api/users/`);
+getOnClick(`https://${URL}/api/users`);
 
 // $("#submit").click(() => {
 //   postOnClick();
@@ -140,18 +140,18 @@ getOnClick(`https://${URL}/api/users/`);
 // }
 
 $("#search-submit").click(() => {
-  getOnClick(`https://${URL}/api/users/${$("#search-input")[0].value}/`);
+  getOnClick(`https://${URL}/api/users/${$("#search-input")[0].value}`);
 });
 
 $("#submit-edit").click(() => {
-  patchOnClick(`https://${URL}/api/users/${$("#edit-input")[0].value}/`);
+  patchOnClick(`https://${URL}/api/users/${$("#edit-input")[0].value}`);
 });
 
 $("#filter-submit").click(() => {
   getOnClick(
     `https://${URL}/api/users?${$("#filter-type-select")[0].value}=${
       $("#filter-select")[0].value
-    }/`
+    }`
   );
 });
 
@@ -159,11 +159,11 @@ $("#sort-submit").click(() => {
   getOnClick(
     `https://${URL}/api/users?${$("#sort-type-select")[0].value}=${
       $("#sort-select")[0].value
-    }/`
+    }`
   );
 });
 
 function removeRow(oButton) {
   let idToRemove = oButton.parentNode.parentNode.firstChild.innerText;
-  deleteOnClick(`https://${URL}/api/users/${idToRemove}/`);
+  deleteOnClick(`https://${URL}/api/users/${idToRemove}`);
 }
