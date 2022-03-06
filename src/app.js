@@ -8,8 +8,9 @@ const bodyParser = require("body-parser");
 const moment = require("moment");
 const fs = require("fs");
 const app = express();
-const IP = process.env.IP;
-const PORT = 8080;
+// const IP = process.env.IP;
+// const PORT = 8080;
+const URL = "joycon-list.herokuapp.com";
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -89,11 +90,15 @@ app.get("/api/users", (req, res) => {
     }
     return res.send({ users: responseArr });
   } else if (sortByDate !== undefined) {
-    if (sortByDate == 'asc') {
-      json.users.sort((a, b) => (Number(new Date(a.date)) > Number(new Date(b.date))) ? 1 : -1);
+    if (sortByDate == "asc") {
+      json.users.sort((a, b) =>
+        Number(new Date(a.date)) > Number(new Date(b.date)) ? 1 : -1
+      );
       return res.send(json);
-    } else if (sortByDate == 'desc') {
-      json.users.sort((a, b) => (Number(new Date(b.date)) > Number(new Date(a.date))) ? -1 : 1);
+    } else if (sortByDate == "desc") {
+      json.users.sort((a, b) =>
+        Number(new Date(b.date)) > Number(new Date(a.date)) ? -1 : 1
+      );
       return res.send(json);
     }
   } else if (Object.keys(req.query).length === 0) {
@@ -188,6 +193,10 @@ app.patch("/api/users/:ident", (req, res) => {
   }
 });
 
+// app.listen(PORT, () => {
+//   console.log(`Listening on http://${IP}:${PORT}`);
+// });
+
 app.listen(PORT, () => {
-  console.log(`Listening on http://${IP}:${PORT}`);
+  console.log(`Listening on https://${URL}`);
 });

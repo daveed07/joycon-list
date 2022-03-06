@@ -1,4 +1,5 @@
-const IP = "192.168.0.26";
+// const IP = "localhost";
+const URL = "joycon-list.herokuapp.com";
 
 const postOnClick = () => {
   $.ajax({
@@ -22,8 +23,11 @@ const postOnClick = () => {
       alert("Error al enviar, por favor intentar nuevamente");
     },
   });
+  // setTimeout(() => {
+  //   getOnClick(`http://${IP}:8080/api/users`);
+  // }, 500);
   setTimeout(() => {
-    getOnClick(`http://${IP}:8080/api/users`);
+    getOnClick(`http://${URL}/api/users`);
   }, 500);
 };
 
@@ -61,8 +65,11 @@ const deleteOnClick = (url) => {
       alert("Error al eliminar, por favor intentar nuevamente");
     },
   });
+  // setTimeout(() => {
+  //   getOnClick(`http://${IP}:8080/api/users`);
+  // }, 500);
   setTimeout(() => {
-    getOnClick(`http://${IP}:8080/api/users`);
+    getOnClick(`http://${URL}/api/users`);
   }, 500);
 };
 
@@ -88,38 +95,75 @@ const patchOnClick = (url) => {
       alert("Error al editar, por favor intentar nuevamente");
     },
   });
+  // setTimeout(() => {
+  //   getOnClick(`http://${IP}:8080/api/users`);
+  // }, 500);
   setTimeout(() => {
-    getOnClick(`http://${IP}:8080/api/users`);
+    getOnClick(`http://${URL}/api/users`);
   }, 500);
 };
 
-getOnClick(`http://${IP}:8080/api/users`);
+// getOnClick(`http://${IP}:8080/api/users`);
+getOnClick(`http://${URL}/api/users`);
 
-$("#submit").click(() => {
-  postOnClick();
-});
+// $("#submit").click(() => {
+//   postOnClick();
+// });
+
+// $("#search-submit").click(() => {
+//   getOnClick(`http://${IP}:8080/api/users/${$("#search-input")[0].value}`);
+// });
+
+// $("#submit-edit").click(() => {
+//   patchOnClick(`http://${IP}:8080/api/users/${$("#edit-input")[0].value}`);
+// });
+
+// $("#filter-submit").click(() => {
+//   getOnClick(
+//     `http://${IP}:8080/api/users?${$("#filter-type-select")[0].value}=${
+//       $("#filter-select")[0].value
+//     }`
+//   );
+// });
+
+// $("#sort-submit").click(() => {
+//   getOnClick(
+//     `http://${IP}:8080/api/users?${$("#sort-type-select")[0].value}=${
+//       $("#sort-select")[0].value
+//     }`
+//   );
+// });
+
+// function removeRow(oButton) {
+//   let idToRemove = oButton.parentNode.parentNode.firstChild.innerText;
+//   deleteOnClick(`http://${IP}:8080/api/users/${idToRemove}`);
+// }
 
 $("#search-submit").click(() => {
-  getOnClick(`http://${IP}:8080/api/users/${$("#search-input")[0].value}`);
+  getOnClick(`http://${URL}/api/users/${$("#search-input")[0].value}`);
 });
 
 $("#submit-edit").click(() => {
-  patchOnClick(`http://${IP}:8080/api/users/${$("#edit-input")[0].value}`);
+  patchOnClick(`http://${URL}/api/users/${$("#edit-input")[0].value}`);
 });
 
 $("#filter-submit").click(() => {
   getOnClick(
-    `http://${IP}:8080/api/users?${$("#filter-type-select")[0].value}=${$('#filter-select')[0].value}`
+    `http://${URL}/api/users?${$("#filter-type-select")[0].value}=${
+      $("#filter-select")[0].value
+    }`
   );
 });
 
-$('#sort-submit').click(() => {
+$("#sort-submit").click(() => {
   getOnClick(
-    `http://${IP}:8080/api/users?${$("#sort-type-select")[0].value}=${$('#sort-select')[0].value}`
+    `http://${URL}/api/users?${$("#sort-type-select")[0].value}=${
+      $("#sort-select")[0].value
+    }`
   );
-})
+});
 
 function removeRow(oButton) {
   let idToRemove = oButton.parentNode.parentNode.firstChild.innerText;
-  deleteOnClick(`http://${IP}:8080/api/users/${idToRemove}`);
+  deleteOnClick(`http://${URL}/api/users/${idToRemove}`);
 }
