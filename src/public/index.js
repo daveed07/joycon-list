@@ -139,6 +139,10 @@ getOnClick(`https://${URL}/api/users`);
 //   deleteOnClick(`https://${IP}:8080/api/users/${idToRemove}`);
 // }
 
+$("#submit").click(() => {
+  postOnClick();
+});
+
 $("#search-submit").click(() => {
   getOnClick(`https://${URL}/api/users/${$("#search-input")[0].value}`);
 });
