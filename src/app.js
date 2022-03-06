@@ -197,6 +197,6 @@ app.patch("/api/users/:ident", (req, res) => {
 //   console.log(`Listening on http://${IP}:${PORT}`);
 // });
 
-app.listen(PORT, () => {
+app.listen(() => {
   console.log(`Listening on https://${URL}`);
 });
