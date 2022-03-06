@@ -10,7 +10,8 @@ const fs = require("fs");
 const app = express();
 // const IP = process.env.IP;
 // const PORT = 8080;
-const URL = "joycon-list.herokuapp.com";
+const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -197,6 +198,7 @@ app.patch("/api/users/:ident", (req, res) => {
 //   console.log(`Listening on http://${IP}:${PORT}`);
 // });
 
-app.listen(() => {
-  console.log(`Listening on https://${URL}`);
+app.listen(PORT, HOST, () => {
+  // console.log(`Listening on http://${HOST}:${PORT}`);
+  console.log('Server started');
 });
