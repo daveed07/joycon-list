@@ -4,7 +4,7 @@ const URL = "joycon-list.herokuapp.com";
 const postOnClick = () => {
   $.ajax({
     type: "POST",
-    url: "/post",
+    url: `https://${URL}/post`,
     data: {
       name: $("#name")[0].value,
       phone: $("#phone")[0].value,
